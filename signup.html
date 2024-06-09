@@ -99,17 +99,14 @@
 					<h1>Sign-up</h1>
 					<form id="signupForm">
 							<div class="input-field">
-									<i class="fas fa-user"></i>
 									<input type="text" id="name" placeholder="Name">
 									<div class="error" id="nameError"></div>
 							</div>
 							<div class="input-field">
-									<i class="fas fa-envelope"></i>
 									<input type="text" id="email" placeholder="E-Mail">
 									<div class="error" id="emailError"></div>
 							</div>
 							<div class="input-field">
-									<i class="fas fa-lock"></i>
 									<input type="password" id="password" placeholder="Password">
 									<div class="error" id="passwordError"></div>
 							</div>
@@ -133,7 +130,7 @@
 
 					let isValid = true;
 
-					// Clear previous errors
+					// clear previous errors
 					document.getElementById('nameError').textContent = '';
 					document.getElementById('emailError').textContent = '';
 					document.getElementById('passwordError').textContent = '';
@@ -144,7 +141,7 @@
 							isValid = false;
 					}
 
-					// Email validation
+					// email validation
 					if (email.trim() === '') {
 							document.getElementById('emailError').textContent = 'Email is required';
 							isValid = false;
@@ -153,13 +150,13 @@
 							isValid = false;
 					}
 
-					// Password validation
+					// password Validation
 					if (password.trim() === '') {
 							document.getElementById('passwordError').textContent = 'Password is required';
 							isValid = false;
 					}
 
-					// If the form is valid, submit it
+					// if form is valid, submit it
 					if (isValid) {
 							alert('Form submitted successfully!');
 							// You can replace the alert with actual form submission
