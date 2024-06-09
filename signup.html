@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+      }
+
+    .container {
+      width: 100%;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-position: center;
+			background-color: #f0f0f0;
+		}
+
+		.form-box {
+			width: 300px;
+			padding: 20px;
+			background-color: white;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border-radius: 8px;
+			color: blue;
+			position: relative;
+      }
+
+		.form-box h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.input-field {
+				background-color: #eaeaea;
+				margin: 15px 0;
+				border-radius: 3px;
+				display: flex;
+				align-items: center;
+				padding: 10px;
+		}
+
+		.input-field i {
+				margin-right: 10px;
+				color: gray;
+		}
+
+		input {
+				width: 100%;
+				background: transparent;
+				border: 0;
+				outline: 0;
+				padding: 10px;
+		}
+
+		form p {
+				text-align: right;
+				font-size: 13px;
+		}
+
+		form p a {
+				color: blue; 
+		}
+
+		.btn-field {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+		}
+
+		.btn-field button {
+				flex-basis: 48%;
+				background: rgb(77, 10, 223);
+				color: wheat;
+				height: 40px;
+				border-radius: 20px;
+				border: 0;
+				outline: 0;
+				cursor: pointer;
+				transition: background-color 0.3s;
+		}
+
+		.btn-field button:hover {
+				background-color: rgb(50, 0, 150); 
+		}
+
+		.error {
+				color: red;
+				font-size: 12px;
+				margin-top: 5px;
+		}
+    </style>
+
+    <title>Signup-button</title>
+</head>
+<body>
+	<div class="container"> 
+			<div class="form-box">
+					<h1>Sign-up</h1>
+					<form id="signupForm">
+							<div class="input-field">
+									<i class="fas fa-user"></i>
+									<input type="text" id="name" placeholder="Name">
+									<div class="error" id="nameError"></div>
+							</div>
+							<div class="input-field">
+									<i class="fas fa-envelope"></i>
+									<input type="text" id="email" placeholder="E-Mail">
+									<div class="error" id="emailError"></div>
+							</div>
+							<div class="input-field">
+									<i class="fas fa-lock"></i>
+									<input type="password" id="password" placeholder="Password">
+									<div class="error" id="passwordError"></div>
+							</div>
+							<p>Forgot Password <a href="#">click-here!</a></p>
+							<div class="btn-field">
+									<button type="submit">Submit</button>
+							</div>
+					</form>
+			</div>
+	</div>
+	<script>
+			document.getElementById('signupForm').addEventListener('submit', function(event) {
+					event.preventDefault();
+					validateForm();
+			});
+
+			function validateForm() {
+					const name = document.getElementById('name').value;
+					const email = document.getElementById('email').value;
+					const password = document.getElementById('password').value;
+
+					let isValid = true;
+
+					// Clear previous errors
+					document.getElementById('nameError').textContent = '';
+					document.getElementById('emailError').textContent = '';
+					document.getElementById('passwordError').textContent = '';
+
+					// Name validation
+					if (name.trim() === '') {
+							document.getElementById('nameError').textContent = 'Name is required';
+							isValid = false;
+					}
+
+					// Email validation
+					if (email.trim() === '') {
+							document.getElementById('emailError').textContent = 'Email is required';
+							isValid = false;
+					} else if (!validateEmail(email)) {
+							document.getElementById('emailError').textContent = 'Invalid email format';
+							isValid = false;
+					}
+
+					// Password validation
+					if (password.trim() === '') {
+							document.getElementById('passwordError').textContent = 'Password is required';
+							isValid = false;
+					}
+
+					// If the form is valid, submit it
+					if (isValid) {
+							alert('Form submitted successfully!');
+							// You can replace the alert with actual form submission
+							// For example: document.getElementById('signupForm').submit();
+					}
+			}
+
+			function validateEmail(email) {
+					const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+					return re.test(String(email).toLowerCase());
+			}
+	</script>
+</body>
+</html>
